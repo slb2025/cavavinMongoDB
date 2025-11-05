@@ -2,14 +2,17 @@ package org.example.cavavin.service;
 
 import org.example.cavavin.bo.Avis;
 import org.example.cavavin.bo.Bouteille;
+import org.example.cavavin.bo.BouteilleResume;
+import org.example.cavavin.controller.dto.BouteilleResumeDTO;
 import org.example.cavavin.dal.AvisRepository;
 import org.example.cavavin.dal.BouteilleRepository;
-import org.example.cavavin.exception.ResourceNotFoundException;
+import org.example.cavavin.service.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 // Cette annotation marque la classe comme un bean de service Spring
 @Service
@@ -79,5 +82,25 @@ public class BouteilleServiceImpl implements BouteilleService {
     public List<Bouteille> findAllWithRegionEagerly() {
         // Délégation simple de la méthode optimisée de la DAL à la couche Service
         return bouteilleRepository.findAllWithRegionEagerly();
+    }
+
+    // --- Opération 4 : Consultation détaillée ---
+    @Override
+    public Bouteille findById(String id) throws ResourceNotFoundException {
+        // Simple délégation au Repository, gère l'exception 404 via l'orElseThrow
+        return bouteilleRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Bouteille", id));
+    }
+
+    // --- Opération 5 : Projection de Performance (Mapping vers DTO) ---
+    @Override
+    public List<BouteilleResumeDTO> findAllResume() {
+        // Délégation au Repository pour obtenir la projection (interface)
+        List<BouteilleResume> resumes = bouteilleRepository.findAllBy(); // Suppose que BouteilleRepository a findAllBy()
+
+        // Conversion de l'interface de projection Spring Data vers le DTO de classe concrète pour l'API REST
+        return resumes.stream()
+                .map(BouteilleResumeDTO::new)
+                .collect(Collectors.toList());
     }
 }

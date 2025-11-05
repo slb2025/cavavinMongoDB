@@ -1,6 +1,4 @@
-package org.example.cavavin.dal;
-
-import org.example.cavavin.bo.Couleur;
+package org.example.cavavin.bo;
 
 // Interface de projection de Spring Data. Elle n'a pas besoin d'être implémentée.
 public interface BouteilleResume {

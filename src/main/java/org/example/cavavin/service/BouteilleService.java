@@ -2,7 +2,8 @@ package org.example.cavavin.service;
 
 import org.example.cavavin.bo.Bouteille;
 import org.example.cavavin.bo.Avis;
-import org.example.cavavin.exception.ResourceNotFoundException;
+import org.example.cavavin.controller.dto.BouteilleResumeDTO;
+import org.example.cavavin.service.exception.ResourceNotFoundException;
 
 import java.util.List;
 
@@ -28,4 +29,8 @@ public interface BouteilleService {
      * Récupère toutes les bouteilles avec les régions chargées en mode Eager.
      */
     List<Bouteille> findAllWithRegionEagerly();
+
+    Bouteille findById(String id);
+
+    List<BouteilleResumeDTO> findAllResume();
 }

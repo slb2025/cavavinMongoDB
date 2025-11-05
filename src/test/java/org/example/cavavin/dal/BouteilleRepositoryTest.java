@@ -1,9 +1,6 @@
 package org.example.cavavin.dal;
 
-import org.example.cavavin.bo.Avis;
-import org.example.cavavin.bo.Bouteille;
-import org.example.cavavin.bo.Couleur;
-import org.example.cavavin.bo.Region;
+import org.example.cavavin.bo.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

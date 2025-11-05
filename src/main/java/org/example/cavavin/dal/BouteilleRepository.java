@@ -1,6 +1,7 @@
 package org.example.cavavin.dal;
 
 import org.example.cavavin.bo.Bouteille;
+import org.example.cavavin.bo.BouteilleResume;
 import org.springframework.data.mongodb.repository.Aggregation; // <-- NOUVEAU
 import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.List;

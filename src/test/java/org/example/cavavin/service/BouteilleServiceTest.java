@@ -6,7 +6,7 @@ import org.example.cavavin.bo.Region;
 import org.example.cavavin.dal.AvisRepository;
 import org.example.cavavin.dal.BouteilleRepository;
 import org.example.cavavin.dal.RegionRepository;
-import org.example.cavavin.exception.ResourceNotFoundException;
+import org.example.cavavin.service.exception.ResourceNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
