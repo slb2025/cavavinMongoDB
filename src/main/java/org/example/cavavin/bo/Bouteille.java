@@ -11,6 +11,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @NoArgsConstructor
 @Data
@@ -28,10 +30,14 @@ public class Bouteille {
     private Integer millesime;
 
     //Stratégie2
-    @DocumentReference
+    @DocumentReference(lazy = true)
     @Field("region_id")
     private Region region;
 
     private Couleur couleur;
 
+
+    // NOUVELLE STRATÉGIE : Référencement (Stocke une liste d'IDs d'Avis)
+    @DocumentReference(lazy = true) // lazy = true est souvent conseillé pour les collections 1-N
+    private List<Avis> avis;
 }
